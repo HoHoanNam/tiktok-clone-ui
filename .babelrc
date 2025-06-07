@@ -1,3 +1,4 @@
+// Cấu hình cho Babel
 {
   "plugins": [
     [
