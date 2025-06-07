@@ -1,5 +1,5 @@
-// Cấu hình cho IDE (VS Code)
 {
+  "_comment": "Cấu hình cho IDE (VS Code)",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
