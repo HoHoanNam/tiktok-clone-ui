@@ -8,7 +8,7 @@
   height: var(--default-layout-header-height, 60px);
   display: flex;
   justify-content: center;
-  box-shadow: 0 1px 1px rgba(0 0 0 / 12%);
+  box-shadow: 0 1px 1px rgb(0 0 0 / 12%);
 }
 
 .inner {
@@ -24,9 +24,13 @@
   align-items: center;
 }
 
+.search,
+.search-result {
+  width: 360px;
+}
+
 .search {
   position: relative;
-  width: 360px;
   height: var(--search-height);
   display: flex;
   padding-left: 16px;
@@ -61,6 +65,13 @@
   &:focus-within {
     border-color: rgba(22, 24, 35, 0.2);
   }
+}
+
+.search-title {
+  font-weight: 600;
+  font-size: 1.4rem;
+  padding: 5px 12px;
+  color: rgba(22, 24, 35, 0.5);
 }
 
 .clear,
