@@ -3,6 +3,8 @@
 
 :root {
   --primary: #fe2c55;
+  --black: #000;
+  --text-color: #333;
 
   // Default layout
   --default-layout-width: 1150px;
@@ -24,4 +26,18 @@ body {
   font-size: 1.6rem;
   line-height: 1.5;
   text-rendering: optimizeSpeed; // Tối ưu tốc độ tải font
+  color: var(--text-color);
+}
+
+// Bỏ đi các thẻ có thuộc tính tabindex (có outline)
+input,
+button,
+[tabindex] {
+  border: none;
+  outline: none;
+}
+
+a[href] {
+  color: var(--text-color);
+  text-decoration: none;
 }
