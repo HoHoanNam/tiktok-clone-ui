@@ -37,10 +37,10 @@ function Button({
   }
 
   if (to) {
-    Comp.to = to;
+    props.to = to;
     Comp = Link;
   } else if (href) {
-    Comp.href = href;
+    props.href = href;
     Comp = 'a';
   }
 
