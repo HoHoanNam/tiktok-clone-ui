@@ -21,24 +21,41 @@ import { PopperWrapper } from '~/components/Popper';
 
 const cx = classNames.bind(styles);
 
+const MENU_ITEMS = [
+  {
+    icon: <FontAwesomeIcon icon={faGlobe} />,
+    title: 'English',
+    children: {
+      title: 'Languages',
+      data: [
+        { code: 'EN', title: 'English' },
+        { code: 'NL', title: 'Dutch' },
+        { code: 'DE', title: 'German' },
+        { code: 'FR', title: 'French' },
+        { code: 'ZH', title: 'Chinese' },
+        { code: 'JA', title: 'Japanese' },
+        { code: 'VI', title: 'Vietnamese' },
+      ],
+    },
+  },
+  {
+    icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+    title: 'Feedback and Help',
+    to: '/feedback',
+  },
+  {
+    icon: <FontAwesomeIcon icon={faKeyboard} />,
+    title: 'Keyboard shortcuts',
+  },
+];
+
 function Header() {
   const [searchResult, setSearchResult] = useState([1, 2]);
 
-  const MENU_ITEMS = [
-    {
-      icon: <FontAwesomeIcon icon={faGlobe} />,
-      title: 'English',
-    },
-    {
-      icon: <FontAwesomeIcon icon={faCircleQuestion} />,
-      title: 'Feedback and Help',
-      to: '/feedback',
-    },
-    {
-      icon: <FontAwesomeIcon icon={faKeyboard} />,
-      title: 'Keyboard shortcuts',
-    },
-  ];
+  // Handle logic
+  const handleMenuChange = (menuItem) => {
+    console.log(menuItem);
+  };
 
   return (
     <header className={cx('wrapper')}>
@@ -91,7 +108,7 @@ function Header() {
           <Button text>Upload</Button>
           <Button primary>Log in</Button>
 
-          <Menu items={MENU_ITEMS}>
+          <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
             <button className={cx('more-btn')}>
               <FontAwesomeIcon icon={faEllipsisVertical} />
             </button>
