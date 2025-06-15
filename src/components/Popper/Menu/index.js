@@ -15,8 +15,6 @@ function Menu({ children, items = [], onChange = defaultFn }) {
   // currentMenu là phần tử cuối cùng của mảng (obj)
   const currentMenu = history[history.length - 1];
 
-  console.log(history);
-
   const renderItems = () => {
     return currentMenu.data.map((item, index) => {
       // Convert sang kiểu boolean
@@ -42,6 +40,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
     <Tippy
       interactive
       delay={[0, 700]}
+      offset={[12, 8]}
       placement="bottom-end"
       appendTo={document.body}
       render={(attrs) => (
@@ -59,6 +58,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
           </PopperWrapper>
         </div>
       )}
+      onHide={() => setHistory((prev) => prev.slice(0, 1))}
     >
       {children}
     </Tippy>
