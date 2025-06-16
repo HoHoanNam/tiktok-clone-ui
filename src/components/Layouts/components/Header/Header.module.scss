@@ -85,6 +85,9 @@
 }
 
 .search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: var(--search-button-width);
   height: 100%;
   font-size: 1.8rem;
@@ -117,9 +120,11 @@
 }
 
 .action-btn {
+  display: inline-flex;
+  align-items: center;
   cursor: pointer;
   font-size: 2.2rem;
-  padding: 4px 12px;
+  padding: 4px 10px;
   color: var(--text-color);
   background-color: transparent;
 }
@@ -132,4 +137,27 @@
   object-fit: cover;
   border-radius: 50%;
   object-position: center;
+}
+
+.current-user {
+  display: flex;
+  align-items: center;
+}
+
+// Badge
+.action-btn.badge {
+  position: relative;
+}
+
+.quantity {
+  position: absolute;
+  top: -1px;
+  right: 3px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding: 4px 7px;
+  border-radius: 50%;
+  color: var(--white);
+  background-color: var(--primary);
+  font-family: 'TikTokFont', sans-serif;
 }

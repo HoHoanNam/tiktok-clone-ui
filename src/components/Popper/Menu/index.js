@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, cloneElement } from 'react';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
 
@@ -14,6 +14,9 @@ function Menu({ children, items = [], onChange = defaultFn }) {
   const [history, setHistory] = useState([{ data: items }]);
   // currentMenu là phần tử cuối cùng của mảng (obj)
   const currentMenu = history[history.length - 1];
+
+  // Tạo ref cho phần tử kích hoạt (Trigger element)
+  const triggerRef = useRef();
 
   const renderItems = () => {
     return currentMenu.data.map((item, index) => {
@@ -43,6 +46,9 @@ function Menu({ children, items = [], onChange = defaultFn }) {
       offset={[12, 8]}
       placement="bottom-end"
       appendTo={document.body}
+      // Có thể dùng để để tách trigger element ra một phần tử khác
+      // thay vì để mặc định là <Tippy>{children}</Tippy>
+      reference={triggerRef}
       render={(attrs) => (
         <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
           <PopperWrapper className={cx('menu-popper')}>
@@ -60,7 +66,8 @@ function Menu({ children, items = [], onChange = defaultFn }) {
       )}
       onHide={() => setHistory((prev) => prev.slice(0, 1))}
     >
-      {children}
+      {/* Truyền ref xuống children */}
+      {cloneElement(children, { ref: triggerRef })}
     </Tippy>
   );
 }

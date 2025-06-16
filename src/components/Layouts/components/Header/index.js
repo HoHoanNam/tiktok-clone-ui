@@ -9,23 +9,28 @@ import {
   faGear,
   faGlobe,
   faCoins,
-  faMessage,
   faSignOut,
   faSpinner,
   faKeyboard,
   faCircleXmark,
-  faCloudArrowUp,
   faCircleQuestion,
   faMagnifyingGlass,
   faEllipsisVertical,
 } from '@fortawesome/free-solid-svg-icons';
 
 import images from '~/assets/images';
+import Image from '~/components/Image';
 import styles from './Header.module.scss';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
 import AccountItem from '~/components/AccountItem';
 import { PopperWrapper } from '~/components/Popper';
+import {
+  InboxIcon,
+  MessageIcon,
+  UploadIcon,
+  SearchIcon,
+} from '~/components/Icons';
 
 const cx = classNames.bind(styles);
 
@@ -134,7 +139,7 @@ function Header() {
             <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
 
             <button className={cx('search-btn')}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
+              <SearchIcon />
             </button>
           </div>
         </HeadlessTippy>
@@ -142,15 +147,24 @@ function Header() {
         <div className={cx('actions')}>
           {currentUser ? (
             <div className={cx('current-user')}>
-              <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
+              <Tippy delay={[0, 50]} content="Upload video" placement="bottom">
                 <button className={cx('action-btn')}>
-                  <FontAwesomeIcon icon={faCloudArrowUp} />
+                  <UploadIcon className={cx('icon-img')} />
                 </button>
               </Tippy>
 
-              <button className={cx('action-btn')}>
-                <FontAwesomeIcon icon={faMessage} />
-              </button>
+              <Tippy delay={[0, 50]} content="Messages" placement="bottom">
+                <button className={cx('action-btn')}>
+                  <MessageIcon className={cx('icon-img')} />
+                </button>
+              </Tippy>
+
+              <Tippy delay={[0, 50]} content="Inbox" placement="bottom">
+                <button className={cx('action-btn', 'badge')}>
+                  <InboxIcon className={cx('icon-img')} />
+                  <span className={cx('quantity')}>8</span>
+                </button>
+              </Tippy>
             </div>
           ) : (
             <>
@@ -164,11 +178,11 @@ function Header() {
             onChange={handleMenuChange}
           >
             {currentUser ? (
-              <img
+              <Image
                 src={images.avatar}
                 className={cx('user-avatar')}
-                alt=""
-                width={300}
+                alt="Avatar"
+                fallback={images.fallbackImage}
               />
             ) : (
               <button className={cx('more-btn')}>
