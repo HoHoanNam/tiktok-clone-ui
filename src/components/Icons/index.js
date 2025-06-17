@@ -60,11 +60,11 @@ export const SearchIcon = ({
   className,
 }) => (
   <svg
-    className={className}
     width={width}
     height={height}
+    fill="currentColor"
     viewBox="0 0 48 48"
-    fill="rgba(22, 24, 35, 0.34)"
+    className={className}
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
